@@ -64,7 +64,7 @@ class DtaTbleOut {
 					$column = (is_array($column) ? (isset($column[0]) ? $column[0] : '') : $column ) ;
 					if (trim($column) != '') {
 						/* try ctype_digit instead of is_numeric */
-						if ((is_numeric(trim($column))) && ((strtoupper($key2) != 'YR') && (strtoupper($key2) != 'YEAR') && (strtoupper($key2) != 'PHYS_FILE_ID') && (strtoupper($key2) != 'COLLECTION_ID') && (strtoupper($key2) != 'LOCATOR')  )  ) {
+						if ( (is_numeric(trim($column))) && ( (strtoupper($key2) != 'YR') && (strtoupper($key2) != 'YEAR')  )  ) {
 							echo "<td>" . number_format(trim($column)). "</td>";
 						} elseif ((strpos(strtoupper($key2), 'DESCRIPTION') !== false ) || (strpos(strtoupper($key2), 'DESC') !== false ) || (strpos(strtoupper($key2), 'CLIENT') !== false )) {
 								$removing = array(' - ', '10.8', '10.85', '10.8X', '2x', '20.1.1', '20.3', '3.2.2', '3.4.4', '3.4.5', 'AWD345', '3x', 'AWD 10', 'AWD 10.8X', 'AWD 10.X', 'AWD 2019 R2', 'AWD10', 'AWD10.85', 'AWD10.8X', 'AWD10X', 'AWD345', 'DPC', 'UCTION');

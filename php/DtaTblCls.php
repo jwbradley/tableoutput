@@ -2,7 +2,7 @@
 
 class DtaTbleOut {
 
-	    function __construct($TbleName, $tableValues, $outHead='', $search=false, $sortord=" 0, 'asc' ", $drpdwn1='50, 75, 100, -1', $drpdwn2='50, 75, 100, "All"', $footer='YES', $screenOut='Y', $SearchTxt='', $paging=true, $search2=false) {
+	    function __construct($TbleName, $tableValues, $headervalues='', $search=false, $sortord=" 0, 'asc' ", $drpdwn1='50, 75, 100, -1', $drpdwn2='50, 75, 100, "All"', $footer='YES', $screenOut='Y', $SearchTxt='', $paging=true, $search2=false) {
     		$this->TblNm     = $TbleName;
 			$this->tableData = $tableValues;
 			$this->drp1      = $drpdwn1;
@@ -20,8 +20,8 @@ class DtaTbleOut {
 				return;
 			}
 
-			if (is_array($outHead)) {
-                $this->headers = $outHead;
+			if (is_array($headervalues)) {
+                $this->headers = $headervalues;
             } else {
             	$this->setHeaders();
             }

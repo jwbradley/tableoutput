@@ -9,10 +9,10 @@ echo "\n<script>\n\tdocument.getElementById(\"pagetitle\").innerHTML = \"DataTab
 
 
 
-// $TokenStorage =  __dir__  . '../.env';
-// $tokenData    =  json_decode(file_get_contents($TokenStorage), true);
-// $webKey       =  $tokenData["key"];
-$webKey       =  'KGOFSXPNMA7WZL1V';
+$TokenStorage =  __dir__  . '/../../.env';
+$tokenData    =  json_decode(file_get_contents($TokenStorage), true);
+$webKey       =  $tokenData["key"];
+
 $interval     =  '5min';
 $stockSymbol  =  'BUD';
 $webFunction  =  'TIME_SERIES_INTRADAY';

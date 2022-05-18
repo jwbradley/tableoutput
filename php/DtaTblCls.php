@@ -64,13 +64,12 @@ class DtaTbleOut {
 					$column = (is_array($column) ? (isset($column[0]) ? $column[0] : '') : $column ) ;
 					if (trim($column) != '') {
 						/* try ctype_digit instead of is_numeric */
-						if ( (is_numeric(trim($column))) && ( (strtoupper($key2) != 'YR') && (strtoupper($key2) != 'YEAR')  )  ) {
-							echo "<td>" . number_format(trim($column)). "</td>";
-						} elseif ((strpos(strtoupper($key2), 'DESCRIPTION') !== false ) || (strpos(strtoupper($key2), 'DESC') !== false ) || (strpos(strtoupper($key2), 'CLIENT') !== false )) {
-								$removing = array(' - ', '10.8', '10.85', '10.8X', '2x', '20.1.1', '20.3', '3.2.2', '3.4.4', '3.4.5', 'AWD345', '3x', 'AWD 10', 'AWD 10.8X', 'AWD 10.X', 'AWD 2019 R2', 'AWD10', 'AWD10.85', 'AWD10.8X', 'AWD10X', 'AWD345', 'DPC', 'UCTION');
-								$cleaned  = trim(str_replace($removing, '', trim(strtoupper($column))));
-								$cleaned  =  (substr($cleaned, -4, 4) == 'PROD' ? substr($cleaned, 0, -4) : $cleaned) ;
-								echo "<td>".$cleaned."</td>";
+						if ((is_numeric(trim($column))) && (strpos(trim($column),'.')) && (strpos(strtoupper($key2), 'PRICE'))) {
+							echo "<td>$" . number_format(trim($column),2,".",","). "</td>";
+						} elseif ((is_numeric(trim($column))) && (strpos(trim($column),'.')) && (!strpos(strtoupper($key2), 'PRICE'))) {
+							echo "<td>" . number_format(trim($column),2,".",","). "</td>";
+						} elseif ((is_numeric(trim($column))) && (!strpos(trim($column),'.'))) {
+							echo "<td>" . number_format(trim($column),0,".",","). "</td>";
 						} else {
 							echo "<td>" . trim($column) . "</td>";
 						}

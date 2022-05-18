@@ -29,8 +29,6 @@ foreach ($thisneedsvar['Time Series (5min)'] as $key => $value) {
 	$counter++;
 }
 
-echo "\n<!--- \$buildArray is set to be\n";var_export($buildArray); echo " -->\n";
-
 $tabledata    =  new DtaTbleOut('stockchart', $buildArray, $header);
 
 ?>

@@ -7,8 +7,6 @@ include('./php/DtaTblCls.php');
 include('./html/datatable_header.html');
 echo "\n<script>\n\tdocument.getElementById(\"pagetitle\").innerHTML = \"DataTable Output\";\n</script>\n";
 
-
-
 $TokenStorage =  __dir__  . '/../../.env';
 $tokenData    =  json_decode(file_get_contents($TokenStorage), true);
 $webKey       =  $tokenData["key"];
@@ -22,19 +20,16 @@ $header       =  array( 'Date & Time', 'open price','high price','low price','cl
 $outputData   =  new getContents('https://www.alphavantage.co/query?function='.$webFunction.'&symbol='.$stockSymbol.'&interval='.$interval.'&apikey='.$webKey);
 $thisneedsvar =  json_decode($outputData->getFileContents(), true);
 foreach ($thisneedsvar['Time Series (5min)'] as $key => $value) {
-		echo "\n<!--- give me the key \n";var_export($key); echo " -->\n";
-
-		$buildArray[$counter]['dattim']       = $key;
-		$buildArray[$counter]['open price']   = $value['1. open'];
-		$buildArray[$counter]['high price']   = $value['2. high'];
-		$buildArray[$counter]['low price']    = $value['3. low'];
-		$buildArray[$counter]['close price']  = $value['4. close'];
-		$buildArray[$counter]['volume']       = $value['5. volume'];
-		$counter++;
+	$buildArray[$counter]['dattim']       = $key;
+	$buildArray[$counter]['open price']   = $value['1. open'];
+	$buildArray[$counter]['high price']   = $value['2. high'];
+	$buildArray[$counter]['low price']    = $value['3. low'];
+	$buildArray[$counter]['close price']  = $value['4. close'];
+	$buildArray[$counter]['volume']       = $value['5. volume'];
+	$counter++;
 }
 
 echo "\n<!--- \$buildArray is set to be\n";var_export($buildArray); echo " -->\n";
-
 
 $tabledata    =  new DtaTbleOut('stockchart', $buildArray, $header);
 

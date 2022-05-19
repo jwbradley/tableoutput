@@ -9,15 +9,14 @@ class getContents {
 		$this->offset       = $offset;
 		$this->maxlength    = $maxlength;
 		$this->timeout      = $timeout;
-		// $this->getFileContents();
+		
 	}
 
 
 	function getFileContents() {
 
 		return file_get_contents($this->url, $this->include_path, $this->context, $this->offset, $this->maxlength);
-		// return file_get_contents('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=5min&apikey=KGOFSXPNMA7WZL1V');
-
+		
 	}
 }
 
